@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block title %}{% endblock title %} 
+{% block content%} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\emp_delete.css' %}" />
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    <p>are you sure you want to delete?</p>
+    <button class="btn btn-danger" type="submit">ok</button>
+    {% comment %} <button type="submit" style="border:none"> {% endcomment %}
+      <a href="{% url 'emp_form' %}" >cancel</a>
+    {% comment %} </button> {% endcomment %}
+  </form>
+</div>
+
+{% endblock content %}

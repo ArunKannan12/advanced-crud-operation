@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    /* background:linear-gradient(rgba(8, 177, 228, 0.219),rgba(12, 63, 233, 0.808))center center/cover scroll no-repeat; */
+    height: 100vh;
+    width: 100%;
+    color: white;
+    
+}

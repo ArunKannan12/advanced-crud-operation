@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="{% static 'css\emp_form.css' %}" />
+<div class="container" style="">
+  <form
+    action=""
+    novalidate
+    method="POST"
+    enctype="multipart/form-data"
+    autocomplete="off"
+  >
+    {% csrf_token %}
+    <div class="mb-1">
+      <label for="" class="form-label">Emloyee name</label>
+      {{form.emp_name}} {% if form.errors.emp_name %}
+      <label for="" class="text-danger"> {{form.errors.emp_name}} </label>
+      {% endif %}
+    </div>
+    <div class="mb-1">
+      <label for="" class="form-label">Employee ID</label>
+      {{form.emp_id}} {% if form.errors.emp_id %}
+      <label for="" class="text-danger"> {{form.errors.emp_id}} </label>
+      {% endif %}
+    </div>
+
+    <div class="mb-1">
+      <label for="" class="form-label">Employee phone number</label>
+      {{form.phone}} {% if form.errors.phone %}
+      <label for="" class="text-danger"> {{form.errors.phone}} </label>
+      {% endif %}
+    </div>
+
+    {{form.e_position|as_crispy_field}}
+    <button class="btn btn-success" type="submit">Register</button>
+  </form>
+{% endblock content %}
