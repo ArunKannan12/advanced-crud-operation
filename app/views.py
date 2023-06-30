@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import *
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -40,6 +41,7 @@ def logoutpage(request):
         logout(request)
         messages.success(request,"you have been successfully logged out from this page 😊 ")
         return redirect('login')
+@login_required(login_url='login')
 def emp_form(request):
     form=empform()
     if request.method == 'POST':
@@ -63,6 +65,7 @@ def emp_form(request):
     return render(request,'emp_form.html',context)
 def emp_list(request):
     pass
+@login_required(login_url='login')
 def emp_update(request,id):
     update_emp=emp_details.objects.get(id=id)
     form=empform(instance=update_emp)
@@ -79,6 +82,7 @@ def emp_update(request,id):
         'form':form
     }
     return render(request,'emp_update.html',context)
+@login_required(login_url='login')
 def emp_delete(request,id):
     delete=emp_details.objects.get(id=id)
     name=emp_details.objects.all()
@@ -90,6 +94,7 @@ def emp_delete(request,id):
         'delete':delete
     }
     return render(request,'emp_delete.html')
+@login_required(login_url='login')
 def emp_position(request):
     form=positionform()
     if request.method == 'POST':
